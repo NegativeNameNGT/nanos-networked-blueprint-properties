@@ -6,6 +6,8 @@ function Blueprint:SetBlueprintPropertyValue( sName, xValue )
     local tProperties = self:GetValue("NetworkedBlueprintProperties", {})
     tProperties[sName] = xValue
     self:SetValue("NetworkedBlueprintProperties", tProperties, true)
+
+    Events.BroadcastRemote("netbp::SetProperty", self, sName, xValue)
 end
 
 ---@param sName string

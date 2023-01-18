@@ -1,3 +1,10 @@
+-- Updates the property when :SetBlueprintPropertyValue is called
+Events.SubscribeRemote("netbp::SetProperty", function ( eBlueprint, sProperty, xValue)
+    if (eBlueprint) then
+        eBlueprint:SetBlueprintPropertyValue(sProperty, xValue)
+    end
+end)
+
 -- Called from server to get a property value
 Events.SubscribeRemote("netbp::GetProperty", function( eBlueprint, sProperty )
     local xPropertyValue = eBlueprint:GetBlueprintPropertyValue(sProperty)
@@ -15,3 +22,4 @@ Blueprint.Subscribe("Spawn", function(eBlueprint)
         end
     end
 end)
+
